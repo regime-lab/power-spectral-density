@@ -77,18 +77,18 @@ def compare_averages(time_series, window_size, alpha_decays):
 # Generate a time series with long-range dependence
 alpha_decays = [    0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
-                0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
+                0.9, 0.9, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
-                0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
+                0.9, 0.9, 0.1, 0.1, 0.9, 0.9, 0.9, 
                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
-                0.9, 0.9, 0.9, 0.9, 0.9, 0.9,0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                0.9, 0.9, 0.9, 0.9, 0.9, 0.9,0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                0.9, 0.9, 0.1, 0.1, 0.2, 0.2, 0.2, 0.9, 0.9, 0.9, 0.9, 0.9,
+                0.9, 0.9, 0.9, 0.9, 0.9, 0.2, 0.2, 0.9, 0.9, 0.9, 0.9, 0.9,
                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9
                 ,0.9, 0.9, 0.9, 0.9, 0.9, 0.9
                 ,0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.7, 0.7, 0.7, 0.7, 0.7, 0.1, 0.5, 0.6, 0.7,
                 0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,
                 0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6]
-alpha_decays=[0]
+#alpha_decays=[0]
 print(len(alpha_decays))
 time_series = generate_time_series(LENGTH, alpha_decays)
 
@@ -107,12 +107,12 @@ time_domain_avg = None
 fig,axs=plt.subplots(2)
 for excursion_pattern in range(window_size):
     num_windows, ensemble_avg, time_domain_avg = compare_averages(time_series, window_size, alpha_decays)
-    axs[0].plot(range(num_windows), time_domain_avg, label='Time-Domain Average', color='darkred', alpha=0.35)
+    axs[0].plot(range(num_windows), time_domain_avg, label='Time-Domain Average', color='darkred', alpha=0.1)
     
 axs[1].plot(range(num_windows), ensemble_avg, label='Ensemble Average', alpha=0.5)
 plt.xlabel('Window Index')
 plt.ylabel('Average')
-axs[0].legend(['Excursion Patterns (Noise)'])
+axs[0].legend(['Excursion Patterns (LRD)'])
 axs[1].legend()
 plt.grid(True)
 plt.show()
