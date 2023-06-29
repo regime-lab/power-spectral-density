@@ -13,10 +13,8 @@ https://regimelab.substack.com/p/ergodic-regimes
 <img width="860" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/ad843943-0f1a-486c-980d-874dd8ad7e05">
 
 
-
-<img width="930" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/15525fe6-f8b5-4111-ba59-adaf3d335198">
-
-<img width="963" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/a5cbc9a3-7c6b-45d6-b854-2e459e95c4be">
+<img width="877" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/43510a67-e08e-4010-b4bd-3cc2e5cf2ae3">
+<img width="836" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/e8c2c893-8b5b-4659-a7ef-dd255820d43b">
 
 
 
