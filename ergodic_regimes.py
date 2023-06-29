@@ -48,7 +48,7 @@ def plot_auto_correlation(auto_corr):
     plt.grid(True)
     plt.show()
 
-LENGTH = 300
+LENGTH = 3000
 
 def compare_averages(time_series, window_size, alpha_decays):
     """
@@ -64,9 +64,9 @@ def compare_averages(time_series, window_size, alpha_decays):
     time_domain_avg = np.zeros(num_windows)
     local_time_series = generate_time_series(LENGTH, alpha_decays)
     
-    for i in range(num_windows):
+    for i in range(num_windows):    
     
-        ensemble_trials = 100
+        ensemble_trials = 10
         for j in range(ensemble_trials): 
             ensemble_avg[i] += np.mean(generate_time_series(window_size, alpha_decays))
         ensemble_avg[i] = ensemble_avg[i]/ensemble_trials    
@@ -89,6 +89,7 @@ alpha_decays = [    0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
                 0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,
                 0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6]
 alpha_decays=[0]
+print(len(alpha_decays))
 time_series = generate_time_series(LENGTH, alpha_decays)
 
 # Calculate auto-correlation
@@ -98,7 +99,7 @@ auto_corr = calculate_auto_correlation(time_series)
 plot_auto_correlation(auto_corr[1:])
 
 # Compare ensemble average and time-domain average
-window_size = 10
+window_size = 150
 num_windows = None
 ensemble_avg = None
 time_domain_avg = None
@@ -111,8 +112,7 @@ for excursion_pattern in range(window_size):
 axs[1].plot(range(num_windows), ensemble_avg, label='Ensemble Average', alpha=0.5)
 plt.xlabel('Window Index')
 plt.ylabel('Average')
-axs[0].legend(['Excursion Patterns (LRD)'])
+axs[0].legend(['Excursion Patterns (Noise)'])
 axs[1].legend()
 plt.grid(True)
 plt.show()
-    
