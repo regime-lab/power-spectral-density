@@ -15,7 +15,7 @@ def generate_time_series(length, alpha_decays):
     time_series = np.zeros(length)
     for i in range(1, length):
         decay = alpha_decays[i] if i < len(alpha_decays) else 0.
-        time_series[i] = decay * time_series[i-1] + np.random.normal(loc=0, scale=1)
+        time_series[i] = decay * time_series[i-1] + np.random.normal(loc=1, scale=2)
     return time_series
 
 def calculate_auto_correlation(time_series):
@@ -48,6 +48,8 @@ def plot_auto_correlation(auto_corr):
     plt.grid(True)
     plt.show()
 
+LENGTH = 300
+
 def compare_averages(time_series, window_size, alpha_decays):
     """
     Compare ensemble average and time-domain average using windows of the data.
@@ -60,29 +62,34 @@ def compare_averages(time_series, window_size, alpha_decays):
     num_windows = length // window_size
     ensemble_avg = np.zeros(num_windows)
     time_domain_avg = np.zeros(num_windows)
-
+    local_time_series = generate_time_series(LENGTH, alpha_decays)
+    
     for i in range(num_windows):
+    
         ensemble_trials = 100
         for j in range(ensemble_trials): 
             ensemble_avg[i] += np.mean(generate_time_series(window_size, alpha_decays))
-        ensemble_avg[i] = ensemble_avg[i]/ensemble_trials
-        
-        time_domain_avg[i] = np.mean(time_series[:i*window_size + window_size])
-
-    plt.plot(range(num_windows), ensemble_avg, label='Ensemble Average', alpha=0.5)
-    plt.plot(range(num_windows), time_domain_avg, label='Time-Domain Average')
-    plt.xlabel('Window Index')
-    plt.ylabel('Average')
-    plt.title('Comparison of Ensemble Average and Time-Domain Average')
-    plt.legend()
-    plt.grid(True)
-    plt.show()
-
+        ensemble_avg[i] = ensemble_avg[i]/ensemble_trials    
+        time_domain_avg[i] = np.mean(local_time_series[:i*window_size + window_size])
+    
+    return num_windows, ensemble_avg, time_domain_avg
 
 # Generate a time series with long-range dependence
-length = 10000
-alpha_decays = [0.89,0.87,0.85,0.83,0.81,0.79,0.7,0.6,0.4,0.33,0.32,0.31] 
-time_series = generate_time_series(length, alpha_decays)
+alpha_decays = [    0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
+                0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
+                0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
+                0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
+                0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
+                0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
+                0.9, 0.9, 0.9, 0.9, 0.9, 0.9,0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                0.9, 0.9, 0.9, 0.9, 0.9, 0.9,0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                0.9, 0.9, 0.9, 0.9, 0.9, 0.9
+                ,0.9, 0.9, 0.9, 0.9, 0.9, 0.9
+                ,0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.7, 0.7, 0.7, 0.7, 0.7, 0.1, 0.5, 0.6, 0.7,
+                0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,
+                0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6]
+alpha_decays=[0]
+time_series = generate_time_series(LENGTH, alpha_decays)
 
 # Calculate auto-correlation
 auto_corr = calculate_auto_correlation(time_series)
@@ -91,5 +98,21 @@ auto_corr = calculate_auto_correlation(time_series)
 plot_auto_correlation(auto_corr[1:])
 
 # Compare ensemble average and time-domain average
-window_size = 100
-compare_averages(time_series, window_size, alpha_decays)
+window_size = 10
+num_windows = None
+ensemble_avg = None
+time_domain_avg = None
+ 
+fig,axs=plt.subplots(2)
+for excursion_pattern in range(window_size):
+    num_windows, ensemble_avg, time_domain_avg = compare_averages(time_series, window_size, alpha_decays)
+    axs[0].plot(range(num_windows), time_domain_avg, label='Time-Domain Average', color='darkred', alpha=0.35)
+    
+axs[1].plot(range(num_windows), ensemble_avg, label='Ensemble Average', alpha=0.5)
+plt.xlabel('Window Index')
+plt.ylabel('Average')
+axs[0].legend(['Excursion Patterns (LRD)'])
+axs[1].legend()
+plt.grid(True)
+plt.show()
+    
