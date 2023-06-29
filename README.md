@@ -2,7 +2,7 @@
 
 The spectral density and ergodicity of a time series are related. We can demonstrate this by constructing a data generating process where a latent effect of auto-correlation diffuses away slowly over time, which is also known as long-range dependence (LRD). The frequency of the distinct variance levels in the data corresponds to how a large shock in the variance tends to be followed by a diffusing process of smaller and smaller shocks until the effect is gone or overcome by a new shock. 
 
-The "Excursion Pattern (LRD)" shown below in the top panel is the time-domain representation of the diffusion process. Since eventually the ato-correlation decays away fully the time-domain representation settles on a value quite different than the ensemble average. 
+The "Excursion Pattern (LRD)" shown below in the top panel is the time-domain representation of the diffusion process. Since eventually the auto-correlation decays away fully the time-domain representation settles on a value quite different than the ensemble average. This doesn't happen in the ensemble average or noise process (without LRD) because there is no initial decaying effect to the auto-correlation. 
 
 RBF Kernels: 
 https://regimelab.substack.com/p/kernels-and-attention-mechanism
