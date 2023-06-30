@@ -48,7 +48,7 @@ def plot_auto_correlation(auto_corr):
     plt.grid(True)
     plt.show()
 
-LENGTH = 500
+LENGTH = 200
 
 def compare_averages(time_series, window_size, alpha_decays):
     """
@@ -142,9 +142,27 @@ axs[0].legend(['Excursion Patterns (LRD time-domain)'])
 axs[1].legend()
 plt.grid(True)
 plt.show()
-print(local_time_series)
-    
-from scipy.fft import fft
-import seaborn as sns 
-sns.lineplot(data=local_time_series)
+
+import gpytorch
+import torch 
+
+# Evaluate kernel auto-covariance matrix (aka 'affinity matrix') 
+kernel = gpytorch.kernels.RBFKernel()
+C = (kernel(torch.tensor(local_time_series)).evaluate()).detach().numpy() 
+
+# Plot the evaluation results
+fig, ax = plt.subplots()
+im = ax.imshow(C, cmap='viridis', origin='lower')
+
+# Add colorbar
+cbar = ax.figure.colorbar(im, ax=ax)
+cbar.ax.set_ylabel('Covariance', rotation=-90, va="bottom")
+
+# Set labels
+ax.set_xlabel('time')
+ax.set_ylabel('time')
+ax.set_title('Auto-Covariance Matrix')
+
+# Show the plot
+plt.grid(False)
 plt.show()
