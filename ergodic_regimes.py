@@ -48,7 +48,7 @@ def plot_auto_correlation(auto_corr):
     plt.grid(True)
     plt.show()
 
-LENGTH = 3000
+LENGTH = 500
 
 def compare_averages(time_series, window_size, alpha_decays):
     """
@@ -72,10 +72,19 @@ def compare_averages(time_series, window_size, alpha_decays):
         ensemble_avg[i] = ensemble_avg[i]/ensemble_trials    
         time_domain_avg[i] = np.mean(local_time_series[:i*window_size + window_size])
     
-    return num_windows, ensemble_avg, time_domain_avg
+    return num_windows, ensemble_avg, time_domain_avg, local_time_series
 
 # Generate a time series with long-range dependence
-alpha_decays = [    0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
+alpha_decays = [  0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.1,0.1,0.2,0.2,0.,0.,0.,0.,0.,0.3,0.4,0.4,0.4,0.4,0.,0.,
+                0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
                 0.9, 0.9, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
@@ -87,7 +96,23 @@ alpha_decays = [    0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
                 ,0.9, 0.9, 0.9, 0.9, 0.9, 0.9
                 ,0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.7, 0.7, 0.7, 0.7, 0.7, 0.1, 0.5, 0.6, 0.7,
                 0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,
-                0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6]
+                0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                0.2,0.3,0.3,0.3,0.4,0.4,0.4,0.5,0.5,0.5,0.5,0.5,
+                0.55,0.65,0.65,0.65,0.65,0.7,0.7,0.9,0.9,0.9,0.9,0.9,
+                0.9,0.9,0.9,0.9,0.9,
+                0.9,0.9,0.9,0.9,0.9]
 #alpha_decays=[0]
 print(len(alpha_decays))
 time_series = generate_time_series(LENGTH, alpha_decays)
@@ -99,20 +124,27 @@ auto_corr = calculate_auto_correlation(time_series)
 plot_auto_correlation(auto_corr[1:])
 
 # Compare ensemble average and time-domain average
-window_size = 150
+window_size = 100
 num_windows = None
 ensemble_avg = None
 time_domain_avg = None
- 
+local_time_series = None
+
 fig,axs=plt.subplots(2)
 for excursion_pattern in range(window_size):
-    num_windows, ensemble_avg, time_domain_avg = compare_averages(time_series, window_size, alpha_decays)
-    axs[0].plot(range(num_windows), time_domain_avg, label='Time-Domain Average', color='darkred', alpha=0.1)
+    num_windows, ensemble_avg, time_domain_avg, local_time_series = compare_averages(time_series, window_size, alpha_decays)
+    axs[0].plot(range(num_windows), time_domain_avg, label='Time-Domain Average', color='darkorange', alpha=0.04)
     
 axs[1].plot(range(num_windows), ensemble_avg, label='Ensemble Average', alpha=0.5)
 plt.xlabel('Window Index')
 plt.ylabel('Average')
-axs[0].legend(['Excursion Patterns (LRD)'])
+axs[0].legend(['Excursion Patterns (LRD time-domain)'])
 axs[1].legend()
 plt.grid(True)
+plt.show()
+print(local_time_series)
+    
+from scipy.fft import fft
+import seaborn as sns 
+sns.lineplot(data=local_time_series)
 plt.show()
