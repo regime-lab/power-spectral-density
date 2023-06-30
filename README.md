@@ -9,6 +9,8 @@ https://regimelab.substack.com/p/ergodic-regimes
 
 <img width="1440" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/a205685b-b426-434d-9b38-8d99d77cb3be">
 
+<img width="765" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/0e5bc19c-cb58-4c55-94cd-deecc95a3ac0">
+
 
 <font size=5>RBF Kernels</font>
 
