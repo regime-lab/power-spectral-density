@@ -23,6 +23,8 @@ RBF Kernels can be used to learn the LRD and rate of auto-correlation decay at d
 
 https://regimelab.substack.com/p/kernels-and-attention-mechanism
 
+<img width="690" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/d9769cb8-eed4-4ff9-b239-15210831f663">
+
 ## Wavelets
 
 The goal of this mini-project will be to see if wavelets/kernels can be used to describe the occurrence of LRD latent states in the data that slowly diffuse away and then may repeat again, periodically. This can be used to design features in many domains e.g. neuroscience, financial markets, climate modeling where there is a multifractal scaling aspect to the data and the frequencies of the power spectrum are time-varying: non-stationary, non-ergodic time series. 
