@@ -6,6 +6,8 @@ The "Excursion Pattern (LRD)" shown below in the top panel is the time-domain re
 
 Substack: https://regimelab.substack.com/p/ergodic-regimes
 
+See <b>ergodic_regimes.py</b>
+
 ## Stable state at beginning of DGP
 <img width="1440" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/a205685b-b426-434d-9b38-8d99d77cb3be">
 
