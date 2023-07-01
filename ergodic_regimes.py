@@ -48,7 +48,7 @@ def plot_auto_correlation(auto_corr):
     plt.grid(True)
     plt.show()
 
-LENGTH = 150
+LENGTH = 250
 
 def compare_averages(time_series, window_size, alpha_decays):
     """
@@ -74,9 +74,23 @@ def compare_averages(time_series, window_size, alpha_decays):
     
     return num_windows, ensemble_avg, time_domain_avg, local_time_series
 
-# Generate a time series with long-range dependence
-alpha_decays = [ 0.98, 0.97, 0.96, 0.94, 0.92, 0.9, 0.8, 0.72, 0.71, 
-                    0.69, 0.68, 0.67, 0.66, 0.55, 0.4, 0.35, 0.25, 0.15 ]
+# Generate a time series with long-range dependence after a waiting period 
+alpha_decays = [ 0., 0., 0., 0., 0., 0., 0., 0.,
+                0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0.9, 0.9, 0.9, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+                        0.8, 0.8, 0.8, 0.8, 0.8, 0.7, 0.7, 0.7, 0.5, 0.5, 0.4, 0.4, 
+                        0.3, 0.3, 0.3, 0.3, 0.2, 0.2, 0.1, 0.1, 0.1, 0.05, 0.05, 0. ]
 #alpha_decays=[0]
 print(len(alpha_decays))
 time_series = generate_time_series(LENGTH, alpha_decays)
@@ -88,7 +102,7 @@ auto_corr = calculate_auto_correlation(time_series)
 plot_auto_correlation(auto_corr[1:])
 
 # Compare ensemble average and time-domain average
-window_size = 30
+window_size = 50
 num_windows = None
 ensemble_avg = None
 time_domain_avg = None
@@ -134,3 +148,4 @@ plt.show()
 import seaborn as sns 
 sns.lineplot(data=local_time_series)
 plt.show()
+
