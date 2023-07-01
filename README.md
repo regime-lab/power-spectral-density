@@ -9,10 +9,13 @@ Substack: https://regimelab.substack.com/p/ergodic-regimes
 See <b>ergodic_regimes.py</b>
 
 ## Stable state in middle of DGP (wave-like): 
-<img width="927" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/88c59b53-e7fd-4bb8-908f-541ba700ac69">
+<img width="625" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/f34667fd-a6c4-416f-b6f4-e034e8ca28f6">
 
 ## Wave-like oscillation: 
-<img width="916" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/7e238277-8555-4df2-bfdf-dd61a733fa63">
+<img width="625" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/7e238277-8555-4df2-bfdf-dd61a733fa63">
+
+## Auto-Correlation 
+<img width="625" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/04d981bf-3b2d-4e81-acab-65622d0a0a62">
 
 ## RBF Kernels
 
@@ -20,14 +23,11 @@ RBF Kernels can be used to learn the LRD and rate of auto-correlation decay at d
 
 https://regimelab.substack.com/p/kernels-and-attention-mechanism
 
-<img width="690" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/d9769cb8-eed4-4ff9-b239-15210831f663">
+<img width="591" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/edc3a330-1257-4ddf-b209-197ebca36949">
 
+## Wavelets (TBD)
 
-<img width="292" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/b6144bdc-9631-40a6-837b-f73f76a114d6">
-
-## Wavelets
-
-The goal of this mini-project will be to see if wavelets/kernels can be used to describe the occurrence of LRD latent states in the data that slowly diffuse away and then may repeat again, periodically. This can be used to design features in many domains e.g. neuroscience, financial markets, climate modeling where there is a multifractal scaling aspect to the data and the frequencies of the power spectrum are time-varying: non-stationary, non-ergodic time series. 
+The goal of this mini-project will be to see if wavelets/or at least kernels can be used to describe the occurrence of LRD latent states in the data that slowly diffuse away and then may repeat again, periodically. This can be used to design features in many domains e.g. neuroscience, financial markets, climate modeling where there is a multifractal scaling aspect to the data and the frequencies of the power spectrum are time-varying: non-stationary, non-ergodic time series. 
 
 Links:
 
