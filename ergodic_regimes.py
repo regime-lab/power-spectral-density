@@ -15,7 +15,7 @@ def generate_time_series(length, autocorr_decays):
     time_series = np.zeros(length)
     for i in range(1, length):
         decay = autocorr_decays[i] if i < len(autocorr_decays) else 0.
-        time_series[i] = decay * time_series[i-1] + np.random.normal(loc=1, scale=2)
+        time_series[i] = decay * time_series[i-1] + np.random.normal(loc=0, scale=1)
     return time_series
 
 def calculate_auto_correlation(time_series):
@@ -48,7 +48,7 @@ def plot_auto_correlation(auto_corr):
     plt.grid(True)
     plt.show()
 
-LENGTH = 500
+LENGTH = 200
 
 def compare_averages(time_series, window_size, autocorr_decays):
     """
@@ -74,47 +74,27 @@ def compare_averages(time_series, window_size, autocorr_decays):
     
     return num_windows, ensemble_avg, time_domain_avg, local_time_series
 
-# Generate a time series with long-range dependence that cycles
-rough_autocorr= [  0.9, 0.8, 0.7,
-                    0.6, 0.5, 0.4,
-                    0.3, 0.2, 0.1,
-                    0.9, 0.8, 0.7,
-                        0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4,
-                         0.3, 0.2, 0.1, 0.9, 0.8, 0.7, 0.4, 0.3, 0.3, 0.3, 0.9, 0.9, 0.9, 0.9, 0.9,
-                          0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.2, 0.2, 0.2, 0.1, 0.9, 0.9, 0.9, 0.9,
-                    0.9, 0.9, 0.9, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
-                        0.8, 0.8, 0.8, 0.8, 0.8, 0.7, 0.7, 0.7, 0.5, 0.5, 0.4, 0.4, 
-                        0.3, 0.3, 0.3, 0.3, 0.2, 0.2, 0.1, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05,
-                        0.3, 0.3, 0.3, 0.3, 0.2, 0.2, 0.1, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05,
-                        0.3, 0.3, 0.3, 0.3, 0.2, 0.2, 0.1, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                        0.9, 0.8, 0.7,  0.9, 0.8, 0.7,  0.9, 0.8, 0.7,  0.9, 0.8, 0.7, 
-                         0.9, 0.8, 0.7,  0.9, 0.8, 0.7,  0.9, 0.8, 0.7,  0.9, 0.8, 0.7,  0.9, 0.8, 0.7, 
-                          0.9, 0.8, 0.7,  0.9, 0.8, 0.7,  0.9, 0.8, 0.7,  0.9, 0.8, 0.7,  0.9, 0.8, 0.7, 
-                          0.5, 0.5, 0.2, 0.1, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05,
-                            0.3, 0.3, 0.3, 0.3, 0.2, 0.2, 0.1, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05]
+# Generate a time series with long-range dependence after wait period 
+rough_autocorr= [  0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.8,
+                       0.8, 0.7,
+                       0.7, 0.6,
+                       0.6, 0.6,
+                       0.6, 0.6,
+                       0.5, 0.4]
 #rough_autocorr=[0]
 print(len(rough_autocorr))
 time_series = generate_time_series(LENGTH, rough_autocorr)
@@ -126,7 +106,7 @@ auto_corr = calculate_auto_correlation(time_series)
 plot_auto_correlation(auto_corr[1:])
 
 # Compare ensemble average and time-domain average
-window_size = 50
+window_size = 40
 num_windows = None
 ensemble_avg = None
 time_domain_avg = None
@@ -154,7 +134,7 @@ from sklearn.cluster import KMeans
 kernel = gpytorch.kernels.RBFKernel(lengthscale=10)
 C = (kernel(torch.tensor(local_time_series)).evaluate()).detach().numpy() 
 eigenvalues, eigenvectors = np.linalg.eig(C)
-# Cluster eigenvalues (Spectral clustering)
+# Cluster eigenvalues (TODO Spectral clustering + Random Fourier Features + Wavelet connections)
 v0 = [float(x) for x in eigenvectors[:, 0]]
 v1 = [float(x) for x in eigenvectors[:, 1]]
 v2 = [float(x) for x in eigenvectors[:, 2]]
@@ -163,14 +143,21 @@ featuredf = pd.DataFrame()
 featuredf['x0']=v0
 featuredf['x1']=v1
 featuredf['x2']=v2
-kmeans_lbl = KMeans(n_clusters=2).fit(featuredf).labels_
+kmeans_n=2
+kmeans_lbl = KMeans(n_clusters=kmeans_n).fit(featuredf).labels_
 fig,ax=plt.subplots()
-sns.scatterplot(data=v0,s=2.5,ax=ax)
-sns.scatterplot(data=v1,s=2.5,ax=ax)
-sns.scatterplot(data=v2,s=2.5,ax=ax)
-for M in range(len(kmeans_lbl)): 
-  if kmeans_lbl[M] == kmeans_lbl[-1]:
-    ax.axvline(M, color='black', alpha=0.15)
+#sns.scatterplot(data=v0,s=3.5,ax=ax)
+#sns.scatterplot(data=v1,s=3.5,ax=ax)
+#sns.scatterplot(data=v2,s=3.5,ax=ax)
+
+sns.lineplot(data=local_time_series, ax=ax)
+state_counts = np.zeros(kmeans_n)
+for M1 in kmeans_lbl:
+  state_counts[M1] += 1 
+  
+for M2 in range(len(kmeans_lbl)): 
+  if kmeans_lbl[M2] == np.argmax(state_counts):
+    ax.axvline(M2, color='black', alpha=0.15)
 plt.show()
 
 
@@ -191,6 +178,3 @@ ax.set_title('Affinity Matrix')
 plt.grid(False)
 plt.show()
 
-# RegimeLab View
-ax=sns.lineplot(data=local_time_series)
-plt.show()
