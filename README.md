@@ -14,7 +14,7 @@ See <b>ergodic_regimes.py</b>
 ## Wave-like oscillation: 
 <img width="625" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/7e238277-8555-4df2-bfdf-dd61a733fa63">
 
-## Auto-Correlation 
+## Slow LRD Decay
 <img width="625" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/04d981bf-3b2d-4e81-acab-65622d0a0a62">
 
 ## RBF Kernels
