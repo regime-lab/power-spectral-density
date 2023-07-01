@@ -8,14 +8,14 @@ Substack: https://regimelab.substack.com/p/ergodic-regimes
 
 See <b>ergodic_regimes.py</b>
 
-## Stable state in middle of DGP (wave-like): 
-<img width="625" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/f34667fd-a6c4-416f-b6f4-e034e8ca28f6">
+## Stable states at start/middle of DGP (wave-like): 
 
-## Wave-like oscillation: 
-<img width="625" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/7e238277-8555-4df2-bfdf-dd61a733fa63">
+<img width="800" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/a4e4912f-35c3-40b7-af63-75127d6934b7">
+
+<img width="800" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/a681239d-43db-4b6b-9dce-cfa6652e691f">
 
 ## Slow LRD Decay
-<img width="625" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/04d981bf-3b2d-4e81-acab-65622d0a0a62">
+<img width="800" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/858fd12b-a85c-4a29-baa7-782b9d5ecac0">
 
 ## RBF Kernels
 
@@ -23,7 +23,7 @@ RBF Kernels can be used to learn the LRD and rate of auto-correlation decay at d
 
 https://regimelab.substack.com/p/kernels-and-attention-mechanism
 
-<img width="591" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/edc3a330-1257-4ddf-b209-197ebca36949">
+<img width="600" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/cc7a0676-bcf1-4f8c-aaec-aa2b8aa6ef2e">
 
 ## Wavelets (TBD)
 
