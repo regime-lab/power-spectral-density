@@ -48,7 +48,7 @@ def plot_auto_correlation(auto_corr):
     plt.grid(True)
     plt.show()
 
-LENGTH = 200
+LENGTH = 240
 
 def compare_averages(time_series, window_size, autocorr_decays):
     """
@@ -79,6 +79,21 @@ rough_autocorr= [  0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
                  0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
                  0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
                  0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
+                       0.9, 0.9,
                        0.9, 0.9,
                        0.9, 0.9,
                        0.9, 0.9,
@@ -94,7 +109,15 @@ rough_autocorr= [  0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
                        0.7, 0.6,
                        0.6, 0.6,
                        0.6, 0.6,
-                       0.5, 0.4]
+                       0.5, 0.4,
+                       0.7,
+                       0.7, 0.6,
+                       0.6, 0.6,
+                       0.6, 0.6,
+                       0.5, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 
+                       0.4, 0.4, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 
+                       0.3, 0.3, 0.3, 0.2, 0.1, 0.1 ]
+                       
 #rough_autocorr=[0]
 print(len(rough_autocorr))
 time_series = generate_time_series(LENGTH, rough_autocorr)
@@ -133,18 +156,36 @@ from sklearn.cluster import KMeans
 # Evaluate kernel self similarity matrix (aka 'affinity matrix') 
 kernel = gpytorch.kernels.RBFKernel(lengthscale=10)
 C = (kernel(torch.tensor(local_time_series)).evaluate()).detach().numpy() 
+
+
+# Define the number of random Fourier features
+num_features = 2
+
+# Generate random Fourier frequencies (random projection matrix)
+from sklearn.random_projection import GaussianRandomProjection
+random_projection = GaussianRandomProjection(n_components=num_features)
+random_projection.fit(C)
+
+# Apply the random projection to the affinity matrix
+rff_approximation = random_projection.transform(C)
+sns.lineplot(data=rff_approximation)
+plt.show()
+print(rff_approximation)
+
+
 eigenvalues, eigenvectors = np.linalg.eig(C)
 # Cluster eigenvalues (TODO Spectral clustering + Random Fourier Features + Wavelet connections)
-v0 = [float(x) for x in eigenvectors[:, 0]]
-v1 = [float(x) for x in eigenvectors[:, 1]]
-v2 = [float(x) for x in eigenvectors[:, 2]]
+#v0 = [float(x) for x in eigenvectors[:, 0]]
+#v1 = [float(x) for x in eigenvectors[:, 1]]
+
+#v2 = [float(x) for x in eigenvectors[:, 2]]
 import pandas as pd 
-featuredf = pd.DataFrame()
-featuredf['x0']=v0
-featuredf['x1']=v1
-featuredf['x2']=v2
+#featuredf = pd.DataFrame()
+#featuredf['x0']=v0
+#featuredf['x1']=v1
+#featuredf['x2']=v2
 kmeans_n=2
-kmeans_lbl = KMeans(n_clusters=kmeans_n).fit(featuredf).labels_
+kmeans_lbl = KMeans(n_clusters=kmeans_n).fit(rff_approximation).labels_
 fig,ax=plt.subplots()
 #sns.scatterplot(data=v0,s=3.5,ax=ax)
 #sns.scatterplot(data=v1,s=3.5,ax=ax)
