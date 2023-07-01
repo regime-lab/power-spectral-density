@@ -48,7 +48,7 @@ def plot_auto_correlation(auto_corr):
     plt.grid(True)
     plt.show()
 
-LENGTH = 240
+LENGTH = 160
 
 def compare_averages(time_series, window_size, autocorr_decays):
     """
@@ -75,47 +75,24 @@ def compare_averages(time_series, window_size, autocorr_decays):
     return num_windows, ensemble_avg, time_domain_avg, local_time_series
 
 # Generate a time series with long-range dependence after wait period 
-rough_autocorr= [  0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.9,
-                       0.9, 0.8,
-                       0.8, 0.7,
-                       0.7, 0.6,
-                       0.6, 0.6,
-                       0.6, 0.6,
-                       0.5, 0.4,
-                       0.7,
-                       0.7, 0.6,
-                       0.6, 0.6,
-                       0.6, 0.6,
-                       0.5, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 
-                       0.4, 0.4, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 
+rough_autocorr= [   0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                       0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                       0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                       0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                       0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                       0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+                       0.6, 0.6, 0.6, 0.6,
+                       0.5, 0.4, 0.7, 0.7, 0.6,
+                       0.6, 0.6, 0.6, 0.6, 0.5, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 
+                       0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 
+                       0.4, 0.4, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 
+                       0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 
                        0.3, 0.3, 0.3, 0.2, 0.1, 0.1 ]
                        
 #rough_autocorr=[0]
@@ -159,7 +136,7 @@ C = (kernel(torch.tensor(local_time_series)).evaluate()).detach().numpy()
 
 
 # Define the number of random Fourier features
-num_features = 2
+num_features = 3
 
 # Generate random Fourier frequencies (random projection matrix)
 from sklearn.random_projection import GaussianRandomProjection
@@ -197,7 +174,7 @@ for M1 in kmeans_lbl:
   state_counts[M1] += 1 
   
 for M2 in range(len(kmeans_lbl)): 
-  if kmeans_lbl[M2] == np.argmax(state_counts):
+  if kmeans_lbl[M2] == np.argmin(state_counts):
     ax.axvline(M2, color='black', alpha=0.15)
 plt.show()
 
