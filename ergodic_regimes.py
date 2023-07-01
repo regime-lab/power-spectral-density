@@ -48,7 +48,7 @@ def plot_auto_correlation(auto_corr):
     plt.grid(True)
     plt.show()
 
-LENGTH = 200
+LENGTH = 150
 
 def compare_averages(time_series, window_size, alpha_decays):
     """
@@ -66,7 +66,7 @@ def compare_averages(time_series, window_size, alpha_decays):
     
     for i in range(num_windows):    
     
-        ensemble_trials = 10
+        ensemble_trials = 100
         for j in range(ensemble_trials): 
             ensemble_avg[i] += np.mean(generate_time_series(window_size, alpha_decays))
         ensemble_avg[i] = ensemble_avg[i]/ensemble_trials    
@@ -75,44 +75,8 @@ def compare_averages(time_series, window_size, alpha_decays):
     return num_windows, ensemble_avg, time_domain_avg, local_time_series
 
 # Generate a time series with long-range dependence
-alpha_decays = [  0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.1,0.1,0.2,0.2,0.,0.,0.,0.,0.,0.3,0.4,0.4,0.4,0.4,0.,0.,
-                0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
-                0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
-                0.9, 0.9, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
-                0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
-                0.9, 0.9, 0.1, 0.1, 0.9, 0.9, 0.9, 
-                0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 
-                0.9, 0.9, 0.1, 0.1, 0.2, 0.2, 0.2, 0.9, 0.9, 0.9, 0.9, 0.9,
-                0.9, 0.9, 0.9, 0.9, 0.9, 0.2, 0.2, 0.9, 0.9, 0.9, 0.9, 0.9,
-                0.9, 0.9, 0.9, 0.9, 0.9, 0.9
-                ,0.9, 0.9, 0.9, 0.9, 0.9, 0.9
-                ,0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.7, 0.7, 0.7, 0.7, 0.7, 0.1, 0.5, 0.6, 0.7,
-                0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,
-                0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                0.2,0.3,0.3,0.3,0.4,0.4,0.4,0.5,0.5,0.5,0.5,0.5,
-                0.55,0.65,0.65,0.65,0.65,0.7,0.7,0.9,0.9,0.9,0.9,0.9,
-                0.9,0.9,0.9,0.9,0.9,
-                0.9,0.9,0.9,0.9,0.9]
+alpha_decays = [ 0.98, 0.97, 0.96, 0.94, 0.92, 0.9, 0.8, 0.72, 0.71, 
+                    0.69, 0.68, 0.67, 0.66, 0.55, 0.4, 0.35, 0.25, 0.15 ]
 #alpha_decays=[0]
 print(len(alpha_decays))
 time_series = generate_time_series(LENGTH, alpha_decays)
@@ -124,7 +88,7 @@ auto_corr = calculate_auto_correlation(time_series)
 plot_auto_correlation(auto_corr[1:])
 
 # Compare ensemble average and time-domain average
-window_size = 100
+window_size = 30
 num_windows = None
 ensemble_avg = None
 time_domain_avg = None
@@ -133,7 +97,7 @@ local_time_series = None
 fig,axs=plt.subplots(2)
 for excursion_pattern in range(window_size):
     num_windows, ensemble_avg, time_domain_avg, local_time_series = compare_averages(time_series, window_size, alpha_decays)
-    axs[0].plot(range(num_windows), time_domain_avg, label='Time-Domain Average', color='darkorange', alpha=0.04)
+    axs[0].plot(range(num_windows), time_domain_avg, label='Time-Domain Average', color='darkorange', alpha=0.25)
     
 axs[1].plot(range(num_windows), ensemble_avg, label='Ensemble Average', alpha=0.5)
 plt.xlabel('Window Index')
@@ -146,8 +110,8 @@ plt.show()
 import gpytorch
 import torch 
 
-# Evaluate kernel auto-covariance matrix (aka 'affinity matrix') 
-kernel = gpytorch.kernels.RBFKernel()
+# Evaluate kernel self similarity matrix (aka 'affinity matrix') 
+kernel = gpytorch.kernels.RBFKernel(lengthscale=10)
 C = (kernel(torch.tensor(local_time_series)).evaluate()).detach().numpy() 
 
 # Plot the evaluation results
@@ -156,13 +120,17 @@ im = ax.imshow(C, cmap='viridis', origin='lower')
 
 # Add colorbar
 cbar = ax.figure.colorbar(im, ax=ax)
-cbar.ax.set_ylabel('Covariance', rotation=-90, va="bottom")
+cbar.ax.set_ylabel('measure', rotation=-90, va="bottom")
 
 # Set labels
 ax.set_xlabel('time')
 ax.set_ylabel('time')
-ax.set_title('Auto-Covariance Matrix')
+ax.set_title('Affinity Matrix')
 
 # Show the plot
 plt.grid(False)
+plt.show()
+
+import seaborn as sns 
+sns.lineplot(data=local_time_series)
 plt.show()
