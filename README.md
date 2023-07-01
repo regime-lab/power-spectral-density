@@ -8,17 +8,15 @@ Substack: https://regimelab.substack.com/p/ergodic-regimes
 
 See <b>ergodic_regimes.py</b>
 
-## Stable states at start/middle of DGP (wave-like): 
+## Stable states at different areas of DGP in time domain (wave-like): 
 
 <img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/a4e4912f-35c3-40b7-af63-75127d6934b7">
 
-<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/e5721e2b-e686-4201-91d4-712fec64101a">
+<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/415564d4-ceda-4e78-96ac-0a76b850bef3">
 
-<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/7eb72520-deb7-4eaf-baef-fa87933902bd">
+## Auto-Correlation Decays Slowly 
 
-## Slow LRD Decay Example
-<img width="350" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/b8ce729b-9bc7-4211-b15d-effeb0043006">
-
+<img width="350" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/ccdd8a84-943b-43fb-a685-683c33ea3f5d">
 
 ## RBF Kernels
 
