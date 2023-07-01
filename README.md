@@ -9,10 +9,10 @@ Substack: https://regimelab.substack.com/p/ergodic-regimes
 See <b>ergodic_regimes.py</b>
 
 ## Stable state in middle of DGP (wave-like): 
-<img width="1440" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/0e5bc19c-cb58-4c55-94cd-deecc95a3ac0">
+<img width="927" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/88c59b53-e7fd-4bb8-908f-541ba700ac69">
 
 ## Wave-like oscillation: 
-<img width="1440" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/a7be0e5f-5e7c-4008-8649-08b576610eb8">
+<img width="916" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/7e238277-8555-4df2-bfdf-dd61a733fa63">
 
 ## RBF Kernels
 
