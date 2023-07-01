@@ -10,9 +10,9 @@ See <b>ergodic_regimes.py</b>
 
 ## Stable states at start/middle of DGP (wave-like): 
 
-<img width="800" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/a4e4912f-35c3-40b7-af63-75127d6934b7">
+<img width="600" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/a4e4912f-35c3-40b7-af63-75127d6934b7">
 
-<img width="800" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/e5721e2b-e686-4201-91d4-712fec64101a">
+<img width="600" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/e5721e2b-e686-4201-91d4-712fec64101a">
 
 ## Slow LRD Decay
 <img width="550" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/b8ce729b-9bc7-4211-b15d-effeb0043006">
