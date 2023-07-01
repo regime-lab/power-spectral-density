@@ -16,8 +16,8 @@ See <b>ergodic_regimes.py</b>
 
 <img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/7eb72520-deb7-4eaf-baef-fa87933902bd">
 
-## Slow LRD Decay
-<img width="450" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/b8ce729b-9bc7-4211-b15d-effeb0043006">
+## Slow LRD Decay Example
+<img width="250" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/b8ce729b-9bc7-4211-b15d-effeb0043006">
 
 
 ## RBF Kernels
