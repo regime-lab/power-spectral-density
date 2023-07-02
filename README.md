@@ -8,13 +8,13 @@ Substack: https://regimelab.substack.com/p/ergodic-regimes
 
 See <b>ergodic_regimes.py</b>
 
-## Stable states at different areas of DGP in time domain:
+## Stable states at different areas of DGP in time domain
 
 <img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/a4e4912f-35c3-40b7-af63-75127d6934b7">
 
-## Auto-Correlation Decays Slowly 
+## Auto-correlation decay rate 
 
-<img width="350" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/b7ef55f8-b818-426d-bee0-86ff42b86b83">
+<img width="400" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/eb587428-b045-4207-a60b-e92857a10a1f">
 
 ## RBF Kernels
 
