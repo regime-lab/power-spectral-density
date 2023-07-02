@@ -26,9 +26,8 @@ https://regimelab.substack.com/p/kernels-and-attention-mechanism
 
 The shaded latent states below are labeled using KMeans which clusters in the lower dimensional space of eigenvectors of the RBF Kernel matrix ie. affinity matrix.
 
-<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/bcb44216-3d87-4afb-85d6-c016f0c5e4f9"><br/>
-
-<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/74ab2b84-5506-4fc7-897e-2f19a3358350">
+<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/ee2c3e71-b4c9-4aa3-a8bf-243e492b76b7"><br/>
+<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/da7604e0-f896-4d2c-ab58-878d2438184d">
 
 ## Why This is Useful 
 
