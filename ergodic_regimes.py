@@ -135,10 +135,10 @@ kernel = gpytorch.kernels.RBFKernel(lengthscale=10)
 C = (kernel(torch.tensor(local_time_series)).evaluate()).detach().numpy() 
 
 
-# Define the number of random Fourier features
-num_features = 3
+# Define the number of random projection features
+num_features = 2
 
-# Generate random Fourier frequencies (random projection matrix)
+# Generate 
 from sklearn.random_projection import GaussianRandomProjection
 random_projection = GaussianRandomProjection(n_components=num_features)
 random_projection.fit(C)
@@ -149,24 +149,17 @@ sns.lineplot(data=rff_approximation)
 plt.show()
 print(rff_approximation)
 
-
-eigenvalues, eigenvectors = np.linalg.eig(C)
 # Cluster eigenvalues (TODO Spectral clustering + Random Fourier Features + Wavelet connections)
+eigenvalues, eigenvectors = np.linalg.eig(C)
 #v0 = [float(x) for x in eigenvectors[:, 0]]
 #v1 = [float(x) for x in eigenvectors[:, 1]]
-
 #v2 = [float(x) for x in eigenvectors[:, 2]]
+
 import pandas as pd 
-#featuredf = pd.DataFrame()
-#featuredf['x0']=v0
-#featuredf['x1']=v1
-#featuredf['x2']=v2
-kmeans_n=2
+# Cluster the projections using KMeans 4 clusters 
+kmeans_n=4
 kmeans_lbl = KMeans(n_clusters=kmeans_n).fit(rff_approximation).labels_
 fig,ax=plt.subplots()
-#sns.scatterplot(data=v0,s=3.5,ax=ax)
-#sns.scatterplot(data=v1,s=3.5,ax=ax)
-#sns.scatterplot(data=v2,s=3.5,ax=ax)
 
 sns.lineplot(data=local_time_series, ax=ax)
 state_counts = np.zeros(kmeans_n)
@@ -177,7 +170,6 @@ for M2 in range(len(kmeans_lbl)):
   if kmeans_lbl[M2] == np.argmin(state_counts):
     ax.axvline(M2, color='black', alpha=0.15)
 plt.show()
-
 
 # Plot the evaluation results
 fig, ax = plt.subplots()
@@ -195,4 +187,3 @@ ax.set_title('Affinity Matrix')
 # Show the plot
 plt.grid(False)
 plt.show()
-
