@@ -48,7 +48,7 @@ def plot_auto_correlation(auto_corr):
     plt.grid(True)
     plt.show()
 
-LENGTH = 160
+LENGTH = 120
 
 def compare_averages(time_series, window_size, autocorr_decays):
     """
@@ -75,21 +75,11 @@ def compare_averages(time_series, window_size, autocorr_decays):
     return num_windows, ensemble_avg, time_domain_avg, local_time_series
 
 # Generate a time series with long-range dependence after wait period 
-rough_autocorr= [   0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                    0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                       0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                       0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                       0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
-                       0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+rough_autocorr= [      0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
                        0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
                        0.6, 0.6, 0.6, 0.6,
                        0.5, 0.4, 0.7, 0.7, 0.6,
-                       0.6, 0.6, 0.6, 0.6, 0.5, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 
+                       0.6, 0.6, 0.6, 0.6, 0.5, 0.4, 0.4,  
                        0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 
                        0.4, 0.4, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 
                        0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 
@@ -130,60 +120,69 @@ import torch
 import seaborn as sns 
 from sklearn.cluster import KMeans
 
-# Evaluate kernel self similarity matrix (aka 'affinity matrix') 
-kernel = gpytorch.kernels.RBFKernel(lengthscale=10)
-C = (kernel(torch.tensor(local_time_series)).evaluate()).detach().numpy() 
+for step in range(1, int(len(local_time_series) / 10)): 
+        
+    # Evaluate kernel self similarity matrix (aka 'affinity matrix') 
+    kernel = gpytorch.kernels.RBFKernel(lengthscale=10)
+    C = (kernel(torch.tensor(local_time_series[:step*10])).evaluate()).detach().numpy() 
 
 
-# Define the number of random projection features
-num_features = 2
+    # Define the number of random Fourier features
+    #num_features = 3
+    # TODO possible to Generate random Fourier frequencies (random projection matrix)
+    #from sklearn.random_projection import GaussianRandomProjection
+    #random_projection = GaussianRandomProjection(n_components=num_features)
+    #random_projection.fit(C)
 
-# Generate 
-from sklearn.random_projection import GaussianRandomProjection
-random_projection = GaussianRandomProjection(n_components=num_features)
-random_projection.fit(C)
+    # Apply the random projection to the affinity matrix
+    #rff_approximation = random_projection.transform(C)
+    #sns.lineplot(data=rff_approximation)
+    #plt.show()
+    #print(rff_approximation)
 
-# Apply the random projection to the affinity matrix
-rff_approximation = random_projection.transform(C)
-sns.lineplot(data=rff_approximation)
-plt.show()
-print(rff_approximation)
 
-# Cluster eigenvalues (TODO Spectral clustering + Random Fourier Features + Wavelet connections)
-eigenvalues, eigenvectors = np.linalg.eig(C)
-#v0 = [float(x) for x in eigenvectors[:, 0]]
-#v1 = [float(x) for x in eigenvectors[:, 1]]
-#v2 = [float(x) for x in eigenvectors[:, 2]]
+    eigenvalues, eigenvectors = np.linalg.eig(C)
+    # Cluster eigenvalues (TODO Spectral clustering + Random Fourier Features + Wavelet connections)
+    v0 = [float(x) for x in eigenvectors[:, 0]]
+    v1 = [float(x) for x in eigenvectors[:, 1]]
+    v2 = [float(x) for x in eigenvectors[:, 2]]
+    import pandas as pd 
+    featuredf = pd.DataFrame()
+    featuredf['x0']=v0
+    featuredf['x1']=v1
+    featuredf['x2']=v2
+    kmeans_n=3
+    kmeans_lbl = KMeans(n_clusters=kmeans_n).fit(featuredf).labels_
+    fig,ax=plt.subplots()
+    #sns.scatterplot(data=v0,s=3.5,ax=ax)
+    #sns.scatterplot(data=v1,s=3.5,ax=ax)
+    #sns.scatterplot(data=v2,s=3.5,ax=ax)
 
-import pandas as pd 
-# Cluster the projections using KMeans 4 clusters 
-kmeans_n=4
-kmeans_lbl = KMeans(n_clusters=kmeans_n).fit(rff_approximation).labels_
-fig,ax=plt.subplots()
+    sns.lineplot(data=local_time_series[:step*10], ax=ax)
+    state_counts = np.zeros(kmeans_n)
+    for M1 in kmeans_lbl:
+        state_counts[M1] += 1 
+    
+    for M2 in range(len(kmeans_lbl)): 
+        if kmeans_lbl[M2] == np.argmax(state_counts):
+            ax.axvline(M2, color='black', alpha=0.15)
+    plt.show()
 
-sns.lineplot(data=local_time_series, ax=ax)
-state_counts = np.zeros(kmeans_n)
-for M1 in kmeans_lbl:
-  state_counts[M1] += 1 
-  
-for M2 in range(len(kmeans_lbl)): 
-  if kmeans_lbl[M2] == np.argmin(state_counts):
-    ax.axvline(M2, color='black', alpha=0.15)
-plt.show()
 
-# Plot the evaluation results
-fig, ax = plt.subplots()
-im = ax.imshow(C, cmap='viridis', origin='lower')
+    # Plot the evaluation results
+    fig, ax = plt.subplots()
+    im = ax.imshow(C, cmap='viridis', origin='lower')
 
-# Add colorbar
-cbar = ax.figure.colorbar(im, ax=ax)
-cbar.ax.set_ylabel('measure', rotation=-90, va="bottom")
+    # Add colorbar
+    cbar = ax.figure.colorbar(im, ax=ax)
+    cbar.ax.set_ylabel('measure', rotation=-90, va="bottom")
 
-# Set labels
-ax.set_xlabel('time')
-ax.set_ylabel('time')
-ax.set_title('Affinity Matrix')
+    # Set labels
+    ax.set_xlabel('time')
+    ax.set_ylabel('time')
+    ax.set_title('Affinity Matrix')
 
-# Show the plot
-plt.grid(False)
-plt.show()
+    # Show the plot
+    plt.grid(False)
+    plt.show()
+
