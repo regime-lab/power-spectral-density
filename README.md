@@ -27,9 +27,13 @@ https://regimelab.substack.com/p/kernels-and-attention-mechanism
 <img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/bcb44216-3d87-4afb-85d6-c016f0c5e4f9">
 <img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/74ab2b84-5506-4fc7-897e-2f19a3358350">
 
-## Wavelets (TBD)
+## Why This is Useful 
 
-The goal of this mini-project will be to see if wavelets/or at least kernels can be used to describe the occurrence of LRD latent states in the data that slowly diffuse away and then may repeat again, periodically. This can be used to design features in many domains e.g. neuroscience, financial markets, climate modeling where there is a multifractal scaling aspect to the data and the frequencies of the power spectrum are time-varying: non-stationary, non-ergodic time series. 
+Wavelets: 
+
+The goal of this mini-project will be to see if wavelets/or at least kernels can be used to describe the occurrence of LRD latent states in the data that slowly diffuse away and then may repeat again, periodically. This can be used to design features in many domains such as neuroscience, economics, climate modeling where there is a multifractal scaling aspect to the data and the frequencies of the power spectrum are time-varying: non-stationary, non-ergodic time series. 
+
+What we are finding is periods of time/phases over windows in the time-varying domain where the time series is self-similar versus periods where it is less self-similar or not self-similar, it could be anti-persistent and mean reverting. This is useful because it tells us something unique that instantaneous statistical moments, such as mean or variance in a hidden Markov model cannot tell us. 
 
 Links:
 
