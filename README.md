@@ -22,10 +22,8 @@ RBF Kernels can be used to learn the LRD and rate of auto-correlation decay at d
 
 https://regimelab.substack.com/p/kernels-and-attention-mechanism
 
-<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/c9527f0c-dc4d-43a7-90ff-0018d3868786">
-
-<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/897323c8-b722-403e-9556-75767b057613">
-
+<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/bcb44216-3d87-4afb-85d6-c016f0c5e4f9">
+<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/74ab2b84-5506-4fc7-897e-2f19a3358350">
 
 ## Wavelets (TBD)
 
