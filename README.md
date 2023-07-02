@@ -14,9 +14,9 @@ See <b>ergodic_regimes.py</b>
 
 ## Auto-correlation decay rate examples (wave-like)
 
-<img width="400" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/eb587428-b045-4207-a60b-e92857a10a1f">
-<img width="400" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/2fd1fa9e-7476-4d88-bd36-240f3be0a8f3">
+<img width="400" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/eb587428-b045-4207-a60b-e92857a10a1f"><br/>
 
+<img width="400" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/2fd1fa9e-7476-4d88-bd36-240f3be0a8f3">
 
 ## RBF Kernels
 
@@ -24,7 +24,8 @@ RBF Kernels can be used to learn the LRD and rate of auto-correlation decay at d
 
 https://regimelab.substack.com/p/kernels-and-attention-mechanism
 
-<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/bcb44216-3d87-4afb-85d6-c016f0c5e4f9">
+<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/bcb44216-3d87-4afb-85d6-c016f0c5e4f9"><br/>
+
 <img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/74ab2b84-5506-4fc7-897e-2f19a3358350">
 
 ## Why This is Useful 
