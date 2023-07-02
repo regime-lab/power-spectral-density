@@ -28,8 +28,7 @@ The shaded latent states below are labeled using KMeans which clusters in the lo
 
 <img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/ee2c3e71-b4c9-4aa3-a8bf-243e492b76b7"><br/>
 
-
-![image](https://github.com/regime-lab/power-spectral-density/assets/114866071/7f233e28-feef-4786-9162-e09110a6f59a)
+<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/7f233e28-feef-4786-9162-e09110a6f59a">
 
 ## Why This is Useful 
 
