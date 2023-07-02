@@ -12,9 +12,11 @@ See <b>ergodic_regimes.py</b>
 
 <img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/a4e4912f-35c3-40b7-af63-75127d6934b7">
 
-## Auto-correlation decay rate example (wave-like)
+## Auto-correlation decay rate examples (wave-like)
 
 <img width="400" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/eb587428-b045-4207-a60b-e92857a10a1f">
+<img width="400" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/2fd1fa9e-7476-4d88-bd36-240f3be0a8f3">
+
 
 ## RBF Kernels
 
