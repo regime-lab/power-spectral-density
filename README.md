@@ -36,6 +36,14 @@ The shaded latent states below are labeled using KMeans which clusters in the lo
 
 <img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/7f233e28-feef-4786-9162-e09110a6f59a">
 
+## RBF Kernel w/ Squared Diffs (Rolling Volatility) 
+
+Applying the kernel to the squared return difference (1st-order differencing) is one way to model volatility. 
+
+<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/097dadac-ca5d-43a3-b194-ba4e84fd222e">
+
+<img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/97b519a9-3db7-43da-98ec-ce8a81f51e9d">
+
 ## Why This is Useful 
 
 Wavelets: 
