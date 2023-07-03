@@ -38,6 +38,8 @@ The shaded latent states below are labeled using KMeans which clusters in the lo
 
 ## RBF Kernel w/ Squared Diffs (Rolling Volatility) 
 
+https://stats.stackexchange.com/questions/386813/use-the-rbf-kernel-to-construct-a-positive-definite-covariance-matrix
+
 Applying the kernel to the squared return difference (1st-order differencing) is one way to model volatility. 
 
 <img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/097dadac-ca5d-43a3-b194-ba4e84fd222e">
