@@ -52,7 +52,7 @@ Wavelets:
 
 The goal of this mini-project will be to see if wavelets/or at least kernels can be used to describe the occurrence of LRD latent states in the data that slowly diffuse away and then may repeat again, periodically. This can be used to design features in many domains such as neuroscience, economics, climate modeling where there is a multifractal scaling aspect to the data and the frequencies of the power spectrum are time-varying: non-stationary, non-ergodic time series. 
 
-What we are finding is periods of time/phases over windows in the time-varying domain where the time series is self-similar versus periods where it is less self-similar or not self-similar, it could be anti-persistent and mean reverting. This is useful because it tells us something unique that instantaneous statistical moments, such as mean or variance in a hidden Markov model cannot tell us. 
+What we are finding is periods of time/phases over windows in the time-varying domain where the time series is self-similar versus periods where it is less self-similar or not self-similar, it could be anti-persistent and mean reverting. This is useful because it tells us something unique that instantaneous statistical moments, such as mean or variance in a hidden Markov model cannot tell us. By preserving a notion of order and self-similarity this can also capture path dependence. 
 
 Links:
 
