@@ -28,6 +28,8 @@ RBF Kernels can be used to learn the LRD and rate of auto-correlation decay at d
 
 https://regimelab.substack.com/p/kernels-and-attention-mechanism
 
+https://portfoliooptimizer.io/blog/correlation-matrices-denoising-results-from-random-matrix-theory/
+
 The shaded latent states below are labeled using KMeans which clusters in the lower dimensional space of eigenvectors of the RBF Kernel matrix ie. affinity matrix.
 
 <img width="500" alt="image" src="https://github.com/regime-lab/power-spectral-density/assets/114866071/04940d03-012d-49ad-81a9-1f9851b75795">
